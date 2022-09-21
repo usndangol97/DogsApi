@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.dogsapi.api.DogsInfoApi
 import com.example.dogsapi.data.ApiDataClass
+import com.example.dogsapi.data.Image
 import com.squareup.moshi.JsonDataException
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -18,10 +19,12 @@ import kotlin.math.log
 
 class ApiViewModel: ViewModel() {
 //    val xApiKey = "live_YDrP3rk8ukEVjAjVGS13jbOrpt8hUs0Jok4Ib9Xr5RR9qJl9JOJtjv6uJqUr46vx"
-    private val _status = MutableLiveData<String>()
+    private val _status = MutableLiveData<ApiDataClass>()
+    private val _photos = MutableLiveData<Image>()
 
     // The external immutable LiveData for the request status
-    val status: LiveData<String> = _status
+    val status: LiveData<ApiDataClass> = _status
+    val photos: LiveData<Image> = _photos
 
     init {
         getInfoDogs()
@@ -47,13 +50,14 @@ class ApiViewModel: ViewModel() {
 //            })
 
             try {
-                val listRes = DogsInfoApi.retrofitService.getInfoDogs()
-                _status.value = "Success: ${listRes.size} Dogs Info retrieved"
+                val listRes = DogsInfoApi.retrofitService.getInfoDogs()[0]
+//                _status.value = "Success: ${listRes.size} Dogs Info retrieved"
+                _status.value = listRes
             }catch (e: JsonDataException){
                 Log.d(TAG, "getInfoDogs: ${e.toString()}")
-                _status.value = "Json Data Exception"
+//                _status.value = "Json Data Exception"
             }catch (e: Exception){
-                _status.value = e.message
+//                _status.value = e.message
             }
         }
     }
