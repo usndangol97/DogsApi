@@ -6,7 +6,6 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Header
 
 private const val BASE_URL ="https://api.thedogapi.com/"
 //private const val BASE_URL = "https://www.boredapi.com/"
@@ -22,7 +21,7 @@ private val retrofit = Retrofit.Builder()
 
 interface DogsServiceApi{
     @GET("v1/breeds")
-    suspend fun getInfoDogs(): ApiDataClass
+    suspend fun getInfoDogs(): List<ApiDataClass>
 }
 
 object DogsInfoApi{
