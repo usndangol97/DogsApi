@@ -3,18 +3,18 @@ package com.example.dogsapi.data
 import com.squareup.moshi.Json
 
 data class ApiDataClass(
-    val bred_for: String,
-    @Json(name="breed_group")
-    val breed_group: String,
+    val bred_for: String = "",
+//    @Json(name="breed_group")
+    val breed_group: String = "",
     val height: Height,
     val id: Int,
     val image: Image,
-    val life_span: String,
-    @Json(name="name")
-    val name: String,
-    val origin: String,
-    val reference_image_id: String,
-    val temperament: String,
+    val life_span: String = "",
+//    @Json(name="name")
+    val name: String = "",
+    val origin: String = "",
+    val reference_image_id: String = "",
+    val temperament: String = "",
     val weight: Weight
 
 /*    val accessibility: Double,
