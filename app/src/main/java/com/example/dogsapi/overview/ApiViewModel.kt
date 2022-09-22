@@ -19,12 +19,10 @@ import kotlin.math.log
 
 class ApiViewModel: ViewModel() {
 //    val xApiKey = "live_YDrP3rk8ukEVjAjVGS13jbOrpt8hUs0Jok4Ib9Xr5RR9qJl9JOJtjv6uJqUr46vx"
-    private val _status = MutableLiveData<ApiDataClass>()
-    private val _photos = MutableLiveData<Image>()
+    private val _status = MutableLiveData<List<ApiDataClass>>()
 
     // The external immutable LiveData for the request status
-    val status: LiveData<ApiDataClass> = _status
-    val photos: LiveData<Image> = _photos
+    val status: LiveData<List<ApiDataClass>> = _status
 
     init {
         getInfoDogs()
@@ -50,7 +48,7 @@ class ApiViewModel: ViewModel() {
 //            })
 
             try {
-                val listRes = DogsInfoApi.retrofitService.getInfoDogs()[0]
+                val listRes = DogsInfoApi.retrofitService.getInfoDogs()
 //                _status.value = "Success: ${listRes.size} Dogs Info retrieved"
                 _status.value = listRes
             }catch (e: JsonDataException){
