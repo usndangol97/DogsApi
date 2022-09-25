@@ -57,8 +57,9 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.0"
 
-/*    implementation "org.koin:koin-core:2.0.1"
-    implementation "org.koin:koin-core-ext:2.0.1"
-    implementation "org.koin:koin-androidx-ext:2.0.1"*/
+    implementation "io.insert-koin:koin-android:3.2.0-beta-1"
+    implementation "io.insert-koin:koin-androidx-navigation:3.2.0-beta-1"
+    implementation "io.insert-koin:koin-androidx-compose:3.2.0-beta-1"
+    testImplementation "io.insert-koin:koin-test-junit4:3.2.0-beta-1"
 
 }
