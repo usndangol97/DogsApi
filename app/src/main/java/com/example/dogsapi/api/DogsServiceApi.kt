@@ -1,11 +1,9 @@
 package com.example.dogsapi.api
 
-import android.app.Application
 import android.content.Context
-import com.example.dogsapi.MyApplication
-import com.example.dogsapi.NetworkUtils
 import com.example.dogsapi.data.ApiDataClass
-import com.paoneking.nepallipi_typenewa.rest.Interceptors
+import com.example.dogsapi.network.Interceptors
+import com.example.dogsapi.network.MyApplication
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.Cache
@@ -43,19 +41,19 @@ fun httpCache(context: Context): Cache {
     .addInterceptor(Interceptors.OfflineResponseCacheInterceptor(MyApplication.getInstance()))
     .build()*/
 
-val okHttpClient = OkHttpClient.Builder()
+/*val okHttpClient = OkHttpClient.Builder()
     .cache(httpCache(MyApplication.getInstance()))
     // Add an Interceptor to the OkHttpClient.
     .addNetworkInterceptor(Interceptors.ResponseCacheInterceptor())
     .addInterceptor(Interceptors.OfflineResponseCacheInterceptor(MyApplication.getInstance()))
-    .build()
+    .build()*/
 
-/*val okHttpClient = OkHttpClient.Builder()
+val okHttpClient = OkHttpClient.Builder()
     .cache(httpCache(MyApplication.getInstance()))
     // Add an Interceptor to the OkHttpClient.
     .addNetworkInterceptor(Interceptors.CacheInterceptor())
     .addInterceptor(Interceptors.ForceCacheInterceptor())
-    .build()*/
+    .build()
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())

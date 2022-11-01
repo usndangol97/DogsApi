@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DogsApi"
-        android:name=".MyApplication"
+        android:name=".network.MyApplication"
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
